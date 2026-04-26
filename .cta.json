@@ -1,0 +1,30 @@
+{
+  "projectName": "bayrozgaar",
+  "mode": "file-router",
+  "typescript": true,
+  "packageManager": "npm",
+  "includeExamples": false,
+  "tailwind": true,
+  "addOnOptions": {
+    "prisma": {
+      "database": "postgres"
+    }
+  },
+  "envVarValues": {
+    "VITE_CLERK_PUBLISHABLE_KEY": "pk_test_ZmVhc2libGUtY293LTk4LmNsZXJrLmFjY291bnRzLmRldiQ"
+  },
+  "git": true,
+  "install": true,
+  "routerOnly": false,
+  "version": 1,
+  "framework": "react",
+  "chosenAddOns": [
+    "biome",
+    "clerk",
+    "prisma",
+    "shadcn",
+    "tanstack-query",
+    "neon",
+    "compiler"
+  ]
+}
