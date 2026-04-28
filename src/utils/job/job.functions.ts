@@ -12,14 +12,14 @@ import {
 } from "./job.server";
 
 export const createJobFn = createServerFn({ method: "POST" })
-	.inputValidator((data: Prisma.JobCreateWithoutUserInput) => data)
+	.validator((data: Prisma.JobCreateWithoutUserInput) => data)
 	.handler(async ({ data }) => {
 		const userId = await requireAuth();
 		return createJob(userId, data);
 	});
 
 export const getJobByIdFn = createServerFn({ method: "GET" })
-	.inputValidator((id: string) => id)
+	.validator((id: string) => id)
 	.handler(async ({ data }) => {
 		return getJobById(data);
 	});
@@ -36,7 +36,7 @@ export const getJobByEmployerFn = createServerFn({ method: "GET" })
 	});
 
 export const updateJobFn = createServerFn({ method: "POST" })
-	.inputValidator((data: { id: string; jobData: Prisma.JobUpdateInput }) => data)
+	.validator((data: { id: string; jobData: Prisma.JobUpdateInput }) => data)
 	.handler(async ({ data }) => {
 		const userId = await requireAuth();
 
@@ -47,7 +47,7 @@ export const updateJobFn = createServerFn({ method: "POST" })
 	});
 
 export const deleteJobFn = createServerFn({ method: "POST" })
-	.inputValidator((id: string) => id)
+	.validator((id: string) => id)
 	.handler(async ({ data }) => {
 		const userId = await requireAuth();
 
@@ -58,7 +58,7 @@ export const deleteJobFn = createServerFn({ method: "POST" })
 	});
 
 export const getJobWithApplicationFn = createServerFn({ method: "GET" })
-	.inputValidator((id: string) => id)
+	.validator((id: string) => id)
 	.handler(async ({ data }) => {
 		const userId = await requireAuth();
 		return getJobWithApplication(userId, data);
