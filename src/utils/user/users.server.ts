@@ -7,7 +7,6 @@ export async function getUserByClerkId(clerkId: string) {
     })
 }
 
-
 export async function createUser(data: Prisma.UserCreateInput) {
     return db.user.create({ data })
 }
@@ -40,3 +39,4 @@ export async function updateUserToEmployer(clerkId: string, companyName: string,
         }
     })
 }
+
