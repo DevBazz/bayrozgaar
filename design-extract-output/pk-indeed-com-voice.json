@@ -1,0 +1,25 @@
+{
+  "tone": "friendly",
+  "pronoun": "you-only",
+  "headingStyle": "Title Case",
+  "headingLengthClass": "tight",
+  "ctaVerbs": [
+    {
+      "value": "return",
+      "count": 1
+    }
+  ],
+  "buttonPatterns": [
+    {
+      "value": "return home\n  →",
+      "count": 1
+    }
+  ],
+  "sampleHeadings": [
+    "Request Blocked"
+  ],
+  "stats": {
+    "buttons": 1,
+    "headings": 1
+  }
+}

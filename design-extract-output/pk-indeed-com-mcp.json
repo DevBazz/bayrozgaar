@@ -1,0 +1,196 @@
+{
+  "colors": {
+    "all": [
+      {
+        "hex": "#2d2d2d",
+        "rgb": {
+          "r": 45,
+          "g": 45,
+          "b": 45,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 18
+        },
+        "count": 84,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#000000",
+        "rgb": {
+          "r": 0,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 0
+        },
+        "count": 16,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#2557a7",
+        "rgb": {
+          "r": 37,
+          "g": 87,
+          "b": 167,
+          "a": 1
+        },
+        "hsl": {
+          "h": 217,
+          "s": 64,
+          "l": 40
+        },
+        "count": 8,
+        "contexts": [
+          "background",
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#dcdcdc",
+        "rgb": {
+          "r": 220,
+          "g": 220,
+          "b": 220,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 86
+        },
+        "count": 4,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      },
+      {
+        "hex": "#ffffff",
+        "rgb": {
+          "r": 255,
+          "g": 255,
+          "b": 255,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 0,
+          "l": 100
+        },
+        "count": 4,
+        "contexts": [
+          "text",
+          "border"
+        ]
+      }
+    ]
+  },
+  "regions": [
+    {
+      "role": "nav",
+      "tag": "nav",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1280,
+        "h": 57
+      },
+      "heading": null,
+      "buttonCount": 2,
+      "cardCount": 9,
+      "className": "gnav"
+    },
+    {
+      "role": "hero",
+      "tag": "main",
+      "bounds": {
+        "x": 400,
+        "y": 57,
+        "w": 480,
+        "h": 408.078125
+      },
+      "heading": "Request Blocked",
+      "buttonCount": 1,
+      "cardCount": 0,
+      "className": "error"
+    }
+  ],
+  "componentClusters": [
+    {
+      "kind": "button",
+      "structuralHash": "a>span",
+      "instanceCount": 1,
+      "variants": [
+        {
+          "css": {
+            "background": "rgb(37, 87, 167)",
+            "color": "rgb(255, 255, 255)",
+            "padding": "9px 16px 9px 16px",
+            "borderRadius": "8px",
+            "border": "0px none rgb(255, 255, 255)",
+            "fontSize": "16px",
+            "fontWeight": "700"
+          },
+          "instanceCount": 1
+        }
+      ]
+    }
+  ],
+  "accessibility": {
+    "remediation": []
+  },
+  "cssHealth": {
+    "sheets": [
+      {
+        "url": "https://pk.indeed.com/",
+        "totalBytes": 6178,
+        "usedBytes": 3223,
+        "unusedBytes": 2955,
+        "unusedPercent": 48
+      }
+    ],
+    "totalBytes": 6178,
+    "usedBytes": 3223,
+    "unusedBytes": 2955,
+    "unusedPercent": 48,
+    "importantCount": 0,
+    "duplicates": 57,
+    "vendorPrefixes": {
+      "webkit": 3,
+      "moz": 1,
+      "ms": 0,
+      "o": 0
+    },
+    "keyframes": [],
+    "specificity": {
+      "max": [
+        0,
+        3,
+        1
+      ],
+      "average": [
+        0,
+        1.16,
+        0.37
+      ],
+      "count": 62
+    },
+    "issues": [
+      "57 duplicate declarations"
+    ]
+  }
+}

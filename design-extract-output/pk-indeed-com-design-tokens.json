@@ -1,0 +1,136 @@
+{
+  "$metadata": {
+    "generator": "designlang",
+    "version": "7.0.0",
+    "spec": "https://design-tokens.github.io/community-group/format/",
+    "source": "https://pk.indeed.com/",
+    "generatedAt": "2026-04-30T17:58:00.702Z"
+  },
+  "primitive": {
+    "color": {
+      "brand": {
+        "primary": {
+          "$value": "#2557a7",
+          "$type": "color"
+        }
+      },
+      "neutral": {
+        "n100": {
+          "$value": "#2d2d2d",
+          "$type": "color"
+        },
+        "n200": {
+          "$value": "#000000",
+          "$type": "color"
+        },
+        "n300": {
+          "$value": "#dcdcdc",
+          "$type": "color"
+        },
+        "n400": {
+          "$value": "#ffffff",
+          "$type": "color"
+        }
+      },
+      "background": {},
+      "text": {
+        "text0": {
+          "$value": "#000000",
+          "$type": "color"
+        },
+        "text1": {
+          "$value": "#2d2d2d",
+          "$type": "color"
+        },
+        "text2": {
+          "$value": "#dcdcdc",
+          "$type": "color"
+        },
+        "text3": {
+          "$value": "#2557a7",
+          "$type": "color"
+        },
+        "text4": {
+          "$value": "#ffffff",
+          "$type": "color"
+        }
+      }
+    },
+    "spacing": {
+      "s0": {
+        "$value": "1px",
+        "$type": "dimension"
+      },
+      "s1": {
+        "$value": "400px",
+        "$type": "dimension"
+      }
+    },
+    "radius": {
+      "r0": {
+        "$value": "8px",
+        "$type": "dimension"
+      }
+    },
+    "shadow": {},
+    "fontFamily": {
+      "f0": {
+        "$value": "Noto Sans",
+        "$type": "fontFamily"
+      },
+      "f1": {
+        "$value": "Times New Roman",
+        "$type": "fontFamily"
+      },
+      "f2": {
+        "$value": "Arial",
+        "$type": "fontFamily"
+      }
+    }
+  },
+  "semantic": {
+    "color": {
+      "action": {
+        "primary": {
+          "$value": "{primitive.color.brand.primary}",
+          "$type": "color"
+        }
+      },
+      "surface": {
+        "default": {
+          "$value": "{primitive.color.background.bg0}",
+          "$type": "color"
+        }
+      },
+      "text": {
+        "body": {
+          "$value": "{primitive.color.text.text0}",
+          "$type": "color"
+        }
+      }
+    },
+    "typography": {
+      "body": {
+        "$value": {
+          "fontFamily": "Noto Sans",
+          "fontSize": "24px",
+          "fontWeight": "700",
+          "lineHeight": "30px"
+        },
+        "$type": "typography"
+      }
+    },
+    "radius": {
+      "control": {
+        "$value": "{primitive.radius.r0}",
+        "$type": "dimension"
+      }
+    },
+    "shadow": {
+      "elevated": {
+        "$value": "{primitive.shadow.sh0}",
+        "$type": "shadow"
+      }
+    }
+  }
+}

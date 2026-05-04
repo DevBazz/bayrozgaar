@@ -1,0 +1,84 @@
+{
+  "pageIntent": {
+    "type": "landing",
+    "confidence": 0.31,
+    "path": "/",
+    "title": "Blocked - Indeed.com",
+    "description": "",
+    "signals": [
+      {
+        "kind": "dom",
+        "type": "auth",
+        "weight": 0.35,
+        "detail": "auth-form-shape"
+      },
+      {
+        "kind": "url",
+        "type": "landing",
+        "weight": 0.45,
+        "detail": "root-path"
+      }
+    ],
+    "alternates": [
+      {
+        "type": "auth",
+        "score": 0.35
+      }
+    ],
+    "needsSmart": true
+  },
+  "sectionRoles": {
+    "sections": [
+      {
+        "index": 0,
+        "tag": "nav",
+        "role": "nav",
+        "subrole": null,
+        "confidence": 0.9,
+        "heading": null,
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "w": 1280,
+          "h": 57
+        },
+        "buttonCount": 2,
+        "cardCount": 9,
+        "slots": {
+          "ctaCount": 2,
+          "lede": "Find jobs\nCompany Reviews\nFind salaries\nUpload your resume\nSign in\nEmployers / Post Job"
+        },
+        "needsSmart": false
+      },
+      {
+        "index": 1,
+        "tag": "main",
+        "role": "hero",
+        "subrole": null,
+        "confidence": 0.85,
+        "heading": "Request Blocked",
+        "bounds": {
+          "x": 400,
+          "y": 57,
+          "w": 480,
+          "h": 408.078125
+        },
+        "buttonCount": 1,
+        "cardCount": 0,
+        "slots": {
+          "heading": "Request Blocked",
+          "ctaCount": 1
+        },
+        "needsSmart": false
+      }
+    ],
+    "counts": {
+      "nav": 1,
+      "hero": 1
+    },
+    "readingOrder": [
+      "nav",
+      "hero"
+    ]
+  }
+}

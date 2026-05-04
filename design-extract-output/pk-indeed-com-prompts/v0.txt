@@ -1,0 +1,16 @@
+Build a landing page with this exact visual language.
+COLORS:
+  #2d2d2d
+  #000000
+  #2557a7
+  #dcdcdc
+  #ffffff
+FONTS: [object Object], [object Object], [object Object]
+SPACING: 1, 400
+RADIUS: 8
+SHADOWS: (none)
+MATERIAL LANGUAGE: flat
+VOICE: Tone: friendly · Headings: Title Case · CTA verbs: [object Object]
+SECTIONS (in order):
+- hero — heading: "Request Blocked"
+Use Tailwind. Match these tokens exactly. Keep the material language consistent.

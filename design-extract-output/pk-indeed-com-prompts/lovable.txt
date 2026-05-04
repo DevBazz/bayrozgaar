@@ -1,0 +1,8 @@
+Clone the design language of this landing page and build a fresh equivalent.
+Visual feel: flat. Tone: friendly · Headings: Title Case · CTA verbs: [object Object]
+Primary palette: #2d2d2d, #000000, #2557a7, #dcdcdc, #ffffff.
+Typography: [object Object], [object Object], [object Object].
+Corner radius vocabulary: 8.
+Shadow vocabulary: (none).
+Page structure:
+- hero — heading: "Request Blocked"

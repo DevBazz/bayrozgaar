@@ -1,0 +1,14 @@
+/* shadcn/ui Theme — extracted from https://pk.indeed.com/ */
+/* Paste into your globals.css */
+
+@layer base {
+  :root {
+    --foreground: 0 0% 0%;
+    --primary: 217 64% 40%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 0 0% 100%;
+    --muted-foreground: 0 0% 18%;
+    --border: 0 0% 100%;
+    --radius: 8px;
+  }
+}

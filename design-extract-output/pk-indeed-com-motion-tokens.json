@@ -1,0 +1,22 @@
+{
+  "$description": "Motion tokens extracted by designlang",
+  "duration": {
+    "sm": {
+      "$value": "200ms",
+      "$type": "duration",
+      "ms": 200
+    }
+  },
+  "easing": {
+    "custom-313": {
+      "$value": "cubic-bezier(0.645, 0.045, 0.355, 1)",
+      "$type": "cubicBezier",
+      "family": "custom"
+    }
+  },
+  "spring": {},
+  "$meta": {
+    "feel": "mixed",
+    "scrollLinked": true
+  }
+}
