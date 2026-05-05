@@ -1,7 +1,17 @@
 import { Link } from '@tanstack/react-router'
-import { SignedIn, SignedOut, UserButton } from '@clerk/clerk-react'
+import { SignedIn, SignedOut, UserButton, useAuth } from '@clerk/clerk-react'
+import { useQuery } from '@tanstack/react-query'
+import { getRole } from '#/utils/user/users.functions'
 
 export default function Navbar() {
+	const { isSignedIn } = useAuth()
+
+	const { data: role } = useQuery({
+		queryKey: ['role'],
+		queryFn: () => getRole(),
+		enabled: !!isSignedIn,
+	})
+
 	return (
 		<nav className="navbar frame">
 			<Link to="/" className="brand">
@@ -17,6 +27,11 @@ export default function Navbar() {
 					<Link to="/sign-up" className="btn-primary">Sign Up</Link>
 				</SignedOut>
 				<SignedIn>
+					<Link to="/my-jobs" className="btn-secondary">My Jobs</Link>
+					{role === 'Employer' && (
+						<Link to="/jobs/create" className="btn-primary">Create Job</Link>
+					)}
+					<Link to="/profile" className="btn-secondary">Profile</Link>
 					<UserButton />
 				</SignedIn>
 			</div>

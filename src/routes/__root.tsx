@@ -8,6 +8,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import ClerkProvider from '../integrations/clerk/provider'
+import TanstackQueryProvider from '../integrations/tanstack-query/root-provider'
 import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 import Navbar from '../components/navbar'
 import appCss from '../styles.css?url'
@@ -51,16 +52,18 @@ function RootDocument() {
 				<HeadContent />
 			</head>
 			<body>
-				<ClerkProvider>
-					<AppShell />
-					<TanStackDevtools
-						config={{ position: 'bottom-right' }}
-						plugins={[
-							{ name: 'Tanstack Router', render: <TanStackRouterDevtoolsPanel /> },
-							TanStackQueryDevtools,
-						]}
-					/>
-				</ClerkProvider>
+				<TanstackQueryProvider>
+					<ClerkProvider>
+						<AppShell />
+						<TanStackDevtools
+							config={{ position: 'bottom-right' }}
+							plugins={[
+								{ name: 'Tanstack Router', render: <TanStackRouterDevtoolsPanel /> },
+								TanStackQueryDevtools,
+							]}
+						/>
+					</ClerkProvider>
+				</TanstackQueryProvider>
 				<Scripts />
 			</body>
 		</html>

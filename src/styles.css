@@ -217,7 +217,7 @@
     }
 
     & > main > .frame {
-      @apply relative w-full overflow-hidden bg-base py-16 md:py-24;
+      @apply relative w-full overflow-hidden bg-base py-6 md:py-8;
     }
   }
 

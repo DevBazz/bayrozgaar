@@ -9,9 +9,10 @@ export async function createApplication(
 ) {
 	const user = await db.user.findUnique({
 		where: { clerkId },
-		select: { id: true },
+		select: { id: true, role: true },
 	});
 	if (!user) throw new Error("User not found");
+	if (user.role === "Employer") throw new Error("Employer accounts cannot apply for jobs");
 
 	const existing = await db.application.findFirst({
 		where: { jobId, userId: user.id },
@@ -19,12 +20,16 @@ export async function createApplication(
 	if (existing) throw new Error("Already applied to this job");
 
 	const [resume, job] = await Promise.all([
-		db.resume.findUnique({ where: { id: resumeId }, select: { content: true } }),
-		db.job.findUnique({ where: { id: jobId }, select: { title: true, description: true, requirements: true } }),
+		db.resume.findUnique({ where: { id: resumeId }, select: { content: true, userId: true } }),
+		db.job.findUnique({ where: { id: jobId }, select: { title: true, description: true, requirements: true, userId: true } }),
 	]);
+	if (!job) throw new Error("Job not found");
+	if (!resume) throw new Error("Resume not found");
+	if (job.userId === user.id) throw new Error("You cannot apply to your own job");
+	if (resume.userId !== user.id) throw new Error("Resume does not belong to this user");
 
 	let matchScore: number | null = null;
-	if (resume?.content && job) {
+	if (resume.content) {
 		matchScore = await scoreResumeAgainstJob(resume.content, job.title, job.description, job.requirements);
 	}
 
