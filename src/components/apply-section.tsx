@@ -121,7 +121,7 @@ export default function ApplySection({ jobId }: ApplySectionProps) {
 			setState('parsing')
 
 			// Parse and save resume
-			const savedResume = await parseAndSaveResumeFn({ data: { url: result.url } })
+				const savedResume = await parseAndSaveResumeFn({ data: { url: result.url, base64Data } })
 			if (!savedResume?.id) throw new Error('Failed to save resume. Please try again.')
 			await applyWithResume(savedResume.id)
 		} catch (err: any) {
