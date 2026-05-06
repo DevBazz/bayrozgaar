@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { useSignIn } from '@clerk/tanstack-react-start'
+import { useClerk } from '@clerk/tanstack-react-start'
 import { useState } from 'react'
 import { syncUser } from '#/utils/user/users.functions'
 
@@ -7,8 +7,17 @@ export const Route = createFileRoute('/sign-in')({
 	component: SignInPage,
 })
 
+function getAuthErrorMessage(err: unknown, fallback: string) {
+	if (typeof err === 'object' && err && 'errors' in err) {
+		const clerkError = err as { errors?: Array<{ message?: string }> }
+		return clerkError.errors?.[0]?.message ?? fallback
+	}
+	if (err instanceof Error) return err.message
+	return fallback
+}
+
 function SignInPage() {
-	const { signIn, isLoaded, setActive } = useSignIn()
+	const { client, setActive } = useClerk()
 	const navigate = useNavigate()
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -17,25 +26,54 @@ function SignInPage() {
 
 	async function handleSubmit(e: React.FormEvent) {
 		e.preventDefault()
-		if (!isLoaded) return
+		
+		if (!client) {
+			setError('Authentication system is not ready. Please try again.')
+			return
+		}
+		
 		setLoading(true)
 		setError('')
+		
 		try {
-			const result = await signIn.create({ identifier: email, password })
-			if (result.status === 'complete') {
-				await setActive({ session: result.createdSessionId })
-				await syncUser()
+			// Create sign-in attempt using the client
+			const signIn = await client.signIn.create({
+				identifier: email,
+				password: password,
+			})
+			
+			if (signIn.status === 'complete') {
+				// Set the active session
+				await setActive({ session: signIn.createdSessionId })
+				
+				// Sync user data
+				try {
+					await syncUser()
+				} catch (syncError) {
+					console.error('User sync failed after sign in', syncError)
+				}
+				
+				// Navigate to home page
 				navigate({ to: '/' })
+				return
 			}
-		} catch (err: any) {
-			setError(err.errors?.[0]?.message ?? 'Sign in failed. Please try again.')
+			
+			// Handle other statuses
+			if (signIn.status === 'needs_second_factor') {
+				setError('Two-factor authentication required')
+			} else {
+				setError('Sign in needs additional verification')
+			}
+		} catch (err: unknown) {
+			console.error('Sign in error:', err)
+			setError(getAuthErrorMessage(err, 'Sign in failed. Please try again.'))
 		} finally {
 			setLoading(false)
 		}
 	}
 
 	return (
-		<div id="sign-in">
+		<div id="sign-in" className="flex justify-center items-center min-h-screen">
 			<div className="w-full max-w-md border border-border bg-card p-8">
 				<div className="mb-8">
 					<h1 className="text-2xl font-bold tracking-tight text-foreground">Sign In</h1>
@@ -53,6 +91,7 @@ function SignInPage() {
 							onChange={(e) => setEmail(e.target.value)}
 							placeholder="you@example.com"
 							required
+							disabled={loading}
 						/>
 					</div>
 
@@ -66,12 +105,17 @@ function SignInPage() {
 							onChange={(e) => setPassword(e.target.value)}
 							placeholder="••••••••"
 							required
+							disabled={loading}
 						/>
 					</div>
 
 					{error && <p className="text-xs text-destructive">{error}</p>}
 
-					<button type="submit" disabled={loading} className="btn-primary disabled:opacity-50">
+					<button
+						type="submit"
+						disabled={loading || !client}
+						className="btn-primary w-full disabled:opacity-50"
+					>
 						{loading ? 'Signing in...' : 'Sign In'}
 					</button>
 				</form>
