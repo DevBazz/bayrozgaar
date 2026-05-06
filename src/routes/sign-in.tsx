@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { useSignIn } from '@clerk/clerk-react'
+import { useSignIn } from '@clerk/tanstack-react-start'
 import { useState } from 'react'
 import { syncUser } from '#/utils/user/users.functions'
 

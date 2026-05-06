@@ -1,6 +1,6 @@
 import { createFileRoute, notFound, Link } from '@tanstack/react-router'
 import { queryOptions, useSuspenseQuery } from '@tanstack/react-query'
-import { useAuth } from '@clerk/clerk-react'
+import { useAuth } from '@clerk/tanstack-react-start'
 import { useQuery } from '@tanstack/react-query'
 import { getJobByIdFn } from '#/utils/job/job.functions'
 import { getRole } from '#/utils/user/users.functions'

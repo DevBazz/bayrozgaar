@@ -1,10 +1,10 @@
 import { Link } from '@tanstack/react-router'
-import { SignedIn, SignedOut, UserButton, useAuth } from '@clerk/clerk-react'
+import { UserButton, useAuth } from '@clerk/tanstack-react-start'
 import { useQuery } from '@tanstack/react-query'
 import { getRole } from '#/utils/user/users.functions'
 
 export default function Navbar() {
-	const { isSignedIn } = useAuth()
+	const { isLoaded, isSignedIn } = useAuth()
 
 	const { data: role } = useQuery({
 		queryKey: ['role'],
@@ -22,18 +22,22 @@ export default function Navbar() {
 			</Link>
 
 			<div className="actions">
-				<SignedOut>
-					<Link to="/sign-in" className="btn-secondary">Sign In</Link>
-					<Link to="/sign-up" className="btn-primary">Sign Up</Link>
-				</SignedOut>
-				<SignedIn>
-					<Link to="/my-jobs" className="btn-secondary">My Jobs</Link>
-					{role === 'Employer' && (
-						<Link to="/jobs/create" className="btn-primary">Create Job</Link>
-					)}
-					<Link to="/profile" className="btn-secondary">Profile</Link>
-					<UserButton />
-				</SignedIn>
+				{isLoaded && !isSignedIn && (
+					<>
+						<Link to="/sign-in" className="btn-secondary">Sign In</Link>
+						<Link to="/sign-up" className="btn-primary">Sign Up</Link>
+					</>
+				)}
+				{isLoaded && isSignedIn && (
+					<>
+						<Link to="/my-jobs" className="btn-secondary">My Jobs</Link>
+						{role === 'Employer' && (
+							<Link to="/jobs/create" className="btn-primary">Create Job</Link>
+						)}
+						<Link to="/profile" className="btn-secondary">Profile</Link>
+						<UserButton />
+					</>
+				)}
 			</div>
 		</nav>
 	)

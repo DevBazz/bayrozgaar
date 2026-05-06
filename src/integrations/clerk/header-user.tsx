@@ -1,19 +1,20 @@
 import {
-  SignedIn,
-  SignInButton,
-  SignedOut,
   UserButton,
-} from '@clerk/clerk-react'
+  useAuth,
+} from '@clerk/tanstack-react-start'
+import { Link } from '@tanstack/react-router'
 
 export default function HeaderUser() {
+  const { isLoaded, isSignedIn } = useAuth()
+
   return (
     <>
-      <SignedIn>
+      {isLoaded && isSignedIn && (
         <UserButton />
-      </SignedIn>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
+      )}
+      {isLoaded && !isSignedIn && (
+        <Link to="/sign-in">Sign In</Link>
+      )}
     </>
   )
 }

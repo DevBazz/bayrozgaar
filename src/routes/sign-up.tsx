@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { useSignUp } from '@clerk/clerk-react'
+import { useSignUp } from '@clerk/tanstack-react-start'
 import { useState } from 'react'
 import { BriefcaseIcon, UserIcon } from 'lucide-react'
 import { syncUser, updateUserRole } from '#/utils/user/users.functions'
