@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireAuth } from "#/lib/auth";
 import { getResume, upsertResume } from "./resume.server";
-import pdfParse from 'pdf-parse';
+import pdfParse from "pdf-parse";
 
 export const upsertResumeFn = createServerFn({ method: "POST" })
 	.inputValidator((data: { url: string; content: string }) => data)
