@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireAuth } from "#/lib/auth";
 import { getResume, upsertResume } from "./resume.server";
-import pdfParse from "pdf-parse";
+import { extractText } from "unpdf";
 
 export const upsertResumeFn = createServerFn({ method: "POST" })
 	.inputValidator((data: { url: string; content: string }) => data)
@@ -24,9 +24,9 @@ export const parseAndSaveResumeFn = createServerFn({ method: "POST" })
 		let content = '';
 		try {
 			const base64 = data.base64Data.split(',')[1] || data.base64Data;
-			const buffer = Buffer.from(base64, 'base64');
-			const result = await pdfParse(buffer);
-			content = result.text.trim();
+			const buffer = new Uint8Array(Buffer.from(base64, 'base64'));
+			const { text } = await extractText(buffer, { mergePages: true });
+			content = (text as string).trim();
 		} catch (err) {
 			throw new Error(`Failed to parse PDF: ${err instanceof Error ? err.message : String(err)}`);
 		}
