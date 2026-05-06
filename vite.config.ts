@@ -4,6 +4,7 @@ import { devtools } from '@tanstack/devtools-vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 
 import viteReact from '@vitejs/plugin-react'
+import { nitro } from 'nitro/vite'
 import tailwindcss from '@tailwindcss/vite'
 
 const config = defineConfig({
@@ -12,6 +13,7 @@ const config = defineConfig({
     devtools(),
     tailwindcss(),
     tanstackStart(),
+    nitro({ preset: 'vercel' }),
     viteReact({
       babel: {
         plugins: ['babel-plugin-react-compiler'],
