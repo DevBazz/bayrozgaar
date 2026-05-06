@@ -130,7 +130,7 @@ function ResumeSection() {
 			setParsing(true)
 
 			// Parse and save resume
-			const savedResume = await parseAndSaveResumeFn({ data: { url: result.url } })
+			const savedResume = await parseAndSaveResumeFn({ data: { url: result.url, base64Data } })
 			if (!savedResume?.id) throw new Error('Failed to save resume. Please try again.')
 			setParsing(false)
 			queryClient.invalidateQueries({ queryKey: ['resume'] })

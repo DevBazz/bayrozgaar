@@ -17,26 +17,18 @@ export const getResumeFn = createServerFn({ method: "GET" })
 	});
 
 export const parseAndSaveResumeFn = createServerFn({ method: "POST" })
-	.inputValidator((data: { url: string }) => data)
+	.inputValidator((data: { url: string; base64Data: string }) => data)
 	.handler(async ({ data }) => {
 		const userId = await requireAuth();
-		console.log('[resume] url received:', data.url);
 
 		let content = '';
 		try {
-			const response = await fetch(data.url);
-			console.log('[resume] fetch status:', response.status, response.headers.get('content-type'));
-			if (!response.ok) throw new Error(`Failed to fetch PDF: ${response.status}`);
-			const buffer = Buffer.from(await response.arrayBuffer());
-			console.log('[resume] buffer size:', buffer.length);
-			
-			// Use pdf-parse v2 API - create instance with data
+			const base64 = data.base64Data.split(',')[1] || data.base64Data;
+			const buffer = Buffer.from(base64, 'base64');
 			const parser = new PDFParse({ data: buffer });
 			const textResult = await parser.getText();
-			content = textResult.text.trim();
-			console.log('[resume] parsed content length:', content.length);
+			content = (textResult.text ?? '').trim();
 		} catch (err) {
-			console.error('[resume] PDF parse error:', err);
 			throw new Error(`Failed to parse PDF: ${err instanceof Error ? err.message : String(err)}`);
 		}
 
